@@ -1,6 +1,6 @@
 <template>
   <div class="relative w-full">
-    <div class="flex items-center justify-center border rounded p-2 w-full">
+    <div class="flex items-center justify-center w-full p-2 border rounded">
       <input
         v-model="searchTerm"
         type="search"
@@ -17,12 +17,12 @@
     <transition name="fade">
       <ul
         v-if="filteredProducts && filteredProducts.length"
-        class="absolute left-0 w-full mt-2 bg-white border rounded shadow-lg max-h-60 overflow-y-auto z-10"
+        class="absolute left-0 z-10 w-full mt-2 overflow-y-auto bg-white border rounded shadow-lg max-h-60"
       >
         <li
           v-for="product in filteredProducts"
           :key="product.id"
-          class="flex items-center p-2 hover:bg-gray-100 cursor-pointer"
+          class="flex items-center p-2 cursor-pointer hover:bg-gray-100"
           @click="selectProduct(product)" 
         >
           <div class="flex items-center">

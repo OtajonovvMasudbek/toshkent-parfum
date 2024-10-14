@@ -12,13 +12,13 @@
         >
           <i :class="showDropdown ? 'ri-close-circle-line' : 'ri-menu-line'"></i>
         </i>
-        <span class="text-white hover:text-b font-semibold">Каталог</span>
+        <span class="font-semibold text-white hover:text-b">Каталог</span>
       </button>
   
       <transition name="fade-slide">
         <div
           v-if="showDropdown"
-          class="absolute left-0 top-full bg-white shadow-lg w-full p-6 z-50"
+          class="absolute left-0 z-50 w-full p-6 bg-white shadow-lg top-full"
         >
           <div class="grid grid-cols-4 gap-8">
             <div
@@ -26,7 +26,7 @@
               :key="index"
               class="category-column"
             >
-              <h3 class="font-bold text-lg mb-3">{{ category.title }}</h3>
+              <h3 class="mb-3 text-lg font-bold">{{ category.title }}</h3>
               <ul>
                 <li
                   v-for="(item, i) in category.items"
