@@ -33,31 +33,39 @@
     >
       Барча бўлимлар
       <i class="text-[14px] ri-arrow-right-line"></i>
-
     </button>
   </div>
 
   <p v-if="error" class="text-red-500">{{ error }}</p>
   <p v-if="loading" class="text-gray-500">Loading...</p>
 </template>
-  
-  <script setup>
+
+<script setup lang="ts">
 import { ref, onMounted } from "vue";
 import axios from "axios";
 
-const products = ref([]);
-const loading = ref(false);
-const error = ref(null);
-const maxVisible = ref(12);
-const visibleProducts = ref([]);
+interface Product {
+  id: number;
+  title: string;
+  icon_src: {
+    medium: string;
+  };
+}
+
+const products = ref<Product[]>([]);
+const loading = ref<boolean>(false);
+const error = ref<string | null>(null);
+const maxVisible = ref<number>(12);
+const visibleProducts = ref<Product[]>([]);
+
 const fetchProducts = async () => {
   loading.value = true;
   try {
-    const response = await axios.get(
+    const response = await axios.get<Product[]>(
       "https://toshkent-parfum.uz/api/v1/products/categories/"
     );
     products.value = response.data;
-    updateVisibleProducts(); 
+    updateVisibleProducts();
   } catch (err) {
     console.error(err);
     error.value = "Error fetching products";
@@ -79,4 +87,3 @@ onMounted(() => {
   fetchProducts();
 });
 </script>
-  

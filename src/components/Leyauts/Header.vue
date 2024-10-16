@@ -94,22 +94,22 @@
           <Button />
         </div>
         <Input />
-        <div class="text-center cursor-pointer group hover:text-slate-700">
+        <router-link to="" class="text-center cursor-pointer group hover:text-slate-700">
           <i
             class="text-2xl text-slate-500 ri-archive-2-line transition-colors duration-300 group-hover:text-[#f62559]"
           ></i>
           <p class="text-xs text-slate-500 transition-colors duration-300 group-hover:text-[#f62559]">
             Buyurtmalarim
           </p>
-        </div>
-        <div class="text-center cursor-pointer group hover:text-slate-700">
+        </router-link>
+        <router-link to="/basket" class="text-center save cursor-pointer group hover:text-slate-700">
           <i
             class="text-2xl text-slate-500 ri-shopping-basket-2-line transition-colors duration-300 group-hover:text-[#f62559]"
           ></i>
-          <p class="text-xs text-slate-500 transition-colors duration-300 group-hover:text-[#f62559]">
+          <p class="text-xs  text-slate-500 transition-colors duration-300 group-hover:text-[#f62559]">
             Savatcha
           </p>
-        </div>
+        </router-link>
         <div class="text-center cursor-pointer group hover:text-slate-700">
           <i
             class="text-2xl text-slate-500 ri-heart-line transition-colors duration-300 group-hover:text-[#f62559]"

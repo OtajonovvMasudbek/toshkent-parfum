@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative w-full  overflow-x-auto scroll-smooth whitespace-nowrap py-4 px-2"
+    class="relative w-full overflow-x-auto scroll-smooth whitespace-nowrap py-4 px-2"
     @mousedown="startDrag"
     @mousemove="onDrag"
     @mouseup="endDrag"
@@ -52,8 +52,8 @@
     </div>
   </div>
 </template>
-  
-  <script setup>
+
+<script setup>
 import { ref, onMounted } from "vue";
 import axios from "axios";
 
@@ -89,6 +89,7 @@ const openModal = (story, index) => {
   currentIndex.value = index;
   startStoryTimer();
   resetProgressBar();
+  document.body.style.overflow = "hidden"; // Orqa foni harakatsiz qilish
 };
 
 const startDrag = (event) => {
@@ -130,6 +131,7 @@ const closeModal = () => {
   modalVisible.value = false;
   progressBarWidth.value = 0;
   clearTimeout(timer);
+  document.body.style.overflow = ""; // Scrollni qayta tiklash
 };
 
 const resetProgressBar = () => {
@@ -143,8 +145,8 @@ onMounted(() => {
   fetchStories();
 });
 </script>
-  
-  <style scoped>
+
+<style scoped>
 .whitespace-nowrap {
   white-space: nowrap;
 }
@@ -163,4 +165,3 @@ onMounted(() => {
   scrollbar-width: none;
 }
 </style>
-  
