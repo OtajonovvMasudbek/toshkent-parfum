@@ -1,13 +1,13 @@
 <template>
   <div>
     <header>
-      <div class="bg-slate-100 w-full">
-        <div class="container mx-auto px-10 py-3">
+      <div class="w-full bg-slate-100">
+        <div class="container px-10 py-3 mx-auto">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-10">
               <a
                 href="tel:+998951455566"
-                class="relative flex items-center gap-1 group transition-all duration-300 cursor-pointer w-full py-2"
+                class="relative flex items-center w-full gap-1 py-2 transition-all duration-300 cursor-pointer group"
               >
                 <i
                   class="ri-phone-fill text-slate-400 text-[20px] group-hover:text-[#f62559] transition-colors duration-300"
@@ -16,7 +16,7 @@
               </a>
               <a
                 href="https://yandex.uz/maps/?ll=25.450000%2C41.578000&z=18"
-                class="relative flex items-center group transition-all duration-300 cursor-pointer w-full py-2"
+                class="relative flex items-center w-full py-2 transition-all duration-300 cursor-pointer group"
                 aria-label="View location on map"
               >
                 <i
@@ -28,7 +28,7 @@
             <div class="flex items-center gap-1">
               <a
                 href=""
-                class="relative group transition-all duration-300 cursor-pointer w-full py-2"
+                class="relative w-full py-2 transition-all duration-300 cursor-pointer group"
                 aria-label="Facebook"
                 @mouseover="showText3 = true"
                 @mouseleave="showText3 = false"
@@ -45,7 +45,7 @@
               </a>
               <a
                 href=""
-                class="relative group transition-all duration-300 cursor-pointer w-full py-2"
+                class="relative w-full py-2 transition-all duration-300 cursor-pointer group"
                 aria-label="Instagram"
                 @mouseover="showText4 = true"
                 @mouseleave="showText4 = false"
@@ -62,7 +62,7 @@
               </a>
               <a
                 href=""
-                class="relative group transition-all duration-300 cursor-pointer w-full py-2"
+                class="relative w-full py-2 transition-all duration-300 cursor-pointer group"
                 aria-label="Telegram"
                 @mouseover="showText5 = true"
                 @mouseleave="showText5 = false"
@@ -84,7 +84,7 @@
           </div>
         </div>
       </div>
-      <div class="flex container mx-auto px-10 gap-10 py-3">
+      <div class="container flex gap-10 px-10 py-3 mx-auto">
         <img
           src="https://toshkent-parfum.uz/images/logo.svg"
           alt="Logo"
@@ -94,7 +94,7 @@
           <Button />
         </div>
         <Input />
-        <div class="text-center group hover:text-slate-700">
+        <div class="text-center cursor-pointer group hover:text-slate-700">
           <i
             class="text-2xl text-slate-500 ri-archive-2-line transition-colors duration-300 group-hover:text-[#f62559]"
           ></i>
@@ -102,7 +102,7 @@
             Buyurtmalarim
           </p>
         </div>
-        <div class="text-center group hover:text-slate-700">
+        <div class="text-center cursor-pointer group hover:text-slate-700">
           <i
             class="text-2xl text-slate-500 ri-shopping-basket-2-line transition-colors duration-300 group-hover:text-[#f62559]"
           ></i>
@@ -110,7 +110,7 @@
             Savatcha
           </p>
         </div>
-        <div class="text-center group hover:text-slate-700">
+        <div class="text-center cursor-pointer group hover:text-slate-700">
           <i
             class="text-2xl text-slate-500 ri-heart-line transition-colors duration-300 group-hover:text-[#f62559]"
           ></i>
@@ -118,7 +118,16 @@
             Saqlanganlar
           </p>
         </div>
+        <div class="flex items-center">
+          <button class="font-bold text-white flex items-center gap-1 rounded-md px-4 py-2 bg-[#f62559] hover:bg-[#f62525] transition-colors duration-300">
+            <i class="text-white ri-login-box-line"></i>
+            Kirish
+          </button>
+        </div>
       </div>
+        <div class="px-10">
+          <Menu/>
+        </div>
     </header>
   </div>
 </template>
@@ -134,6 +143,7 @@ import Text from "../Common/Header/Text.vue";
 import LanguageSelector from "../Common/Header/LanguageSelector.vue";
 import Button from "../Common/Header/Button.vue";
 import Input from "../Common/Header/Input.vue";
+import Menu from "../Common/Header/Menu.vue"
 </script>
   
   <style scoped>

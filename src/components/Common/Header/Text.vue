@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p class="text-slate-400  text-[13px] transition-colors duration-300 font-sens group-hover:text-[#f62559] truncate">
+        <p class="text-slate-400 text-[13px] transition-colors duration-300 font-sans group-hover:text-[#f62559] truncate">
             {{ text }}
         </p>
     </div>
