@@ -2,7 +2,7 @@
   <div
     v-for="product in visibleProducts"
     :key="product.id"
-    class="group flex justify-between items-end max-h-[120px] shadow-lg transition-transform rounded-xl duration-300 hover:shadow-xl pl-2 pt-2 my-2 overflow-hidden"
+    class="group flex justify-between items-end max-h-[120px] shadow  rounded-lg transition-all  duration-300 hover:shadow-lg pl-2 pt-2 my-2 overflow-hidden"
   >
     <div>
       <h2

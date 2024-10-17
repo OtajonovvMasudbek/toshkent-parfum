@@ -18,7 +18,7 @@
       <img
         :src="story.image_src.default"
         alt="Story"
-        class="w-full h-auto object-cover rounded-lg"
+        class="w-full h-auto object-cover rounded-lg transition-all duration-500 -hover:translate-x-1 -hover:translate-y-1 hover:translate-x-1 hover:translate-y-1"
       />
       <h3 class="mt-2 text-lg font-semibold text-center">{{ story.title }}</h3>
     </div>
@@ -89,7 +89,7 @@ const openModal = (story, index) => {
   currentIndex.value = index;
   startStoryTimer();
   resetProgressBar();
-  document.body.style.overflow = "hidden"; // Orqa foni harakatsiz qilish
+  document.body.style.overflow = "hidden"; 
 };
 
 const startDrag = (event) => {
@@ -131,7 +131,7 @@ const closeModal = () => {
   modalVisible.value = false;
   progressBarWidth.value = 0;
   clearTimeout(timer);
-  document.body.style.overflow = ""; // Scrollni qayta tiklash
+  document.body.style.overflow = ""; 
 };
 
 const resetProgressBar = () => {

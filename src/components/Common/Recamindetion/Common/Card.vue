@@ -2,18 +2,21 @@
   <div
     v-for="(product, index) in products.slice(0, 6)"
     :key="product.id"
-    class="bg-white/25 rounded-xl h-[380px] shadow-lg border-spacing-[0.5px] transition-all duration-500 hover:shadow-2xl my-5 p-3 group relative flex flex-col justify-between"
+    class="bg-white/25 rounded-xl cursor-pointer h-[380px] shadow-lg border-spacing-[0.5px] transition-all duration-500 hover:shadow-2xl my-5 p-3 group relative flex flex-col justify-between"
   >
     <i
       class="absolute right-4 top-5 bg-slate-100 px-2 py-1 rounded-lg transition-all duration-300 hover:text-[#f62559] text-xl ri-heart-line"
     ></i>
 
     <div class="mb-3 flex justify-center">
-      <img
-        class="max-w-[150px] max-h-[150px] object-contain"
-        :src="product.images[currentImageIndex[index]].default"
-        :alt="product.name"
-      />
+      <transition name="fade">
+        <img
+          v-if="product.images.length"
+          class="max-w-[150px] max-h-[150px] object-contain"
+          :src="product.images[currentImageIndex[index]].default"
+          :alt="product.name"
+        />
+      </transition>
     </div>
 
     <div class="flex flex-col flex-grow justify-between">
@@ -32,7 +35,6 @@
       </div>
 
       <button
-        @click="addToCart(product)"
         class="bg-[#f62559] hover:bg-red-500 transition-all duration-300 flex items-center gap-2 px-3 text-white w-full text-[14px] font-semibold py-1 rounded-lg mt-auto"
       >
         <i class="text-white addition text-2xl ri-shopping-basket-2-line"></i>
@@ -41,17 +43,10 @@
     </div>
   </div>
 </template>
-  
-  <script setup>
+
+<script setup>
 import { ref, onMounted } from "vue";
 import axios from "axios";
-import { useCartStore } from '../store/cart';
-
-const cartStore = useCartStore();
-
-const addToCart = (product) => {
-  cartStore.addToCart(product);
-};
 
 const products = ref([]);
 const currentImageIndex = ref([]);
@@ -77,18 +72,23 @@ const fetchProducts = async () => {
   }
 };
 
-// Method to rotate images
 const startImageRotation = (productIndex, imageCount) => {
   setInterval(() => {
-    // Update the image index, looping back to 0 when reaching the end
     currentImageIndex.value[productIndex] =
       (currentImageIndex.value[productIndex] + 1) % imageCount;
   }, 3000); // Change image every 3 seconds
 };
 
-// Fetch products when the component is mounted
 onMounted(() => {
   fetchProducts();
 });
 </script>
-  
+
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
+}
+</style>

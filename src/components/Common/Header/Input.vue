@@ -8,11 +8,9 @@
         @input="debouncedSearch"
         class="flex-1 outline-none"
       />
-      <button
-        v-if="searchTerm"
-        @click="clearSearch"
-        class="ml-2 text-xl"
-      ><i class="ri-close-line"></i></button>
+      <button v-if="searchTerm" @click="clearSearch" class="ml-2 text-xl">
+        <i class="ri-close-line"></i>
+      </button>
     </div>
     <transition name="fade">
       <ul
@@ -23,7 +21,7 @@
           v-for="product in filteredProducts"
           :key="product.id"
           class="flex items-center p-2 cursor-pointer hover:bg-gray-100"
-          @click="selectProduct(product)" 
+          @click="selectProduct(product)"
         >
           <div class="flex items-center">
             <div v-if="product.images" class="mr-2">
@@ -76,8 +74,8 @@ const clearSearch = () => {
 
 const selectProduct = (product) => {
   console.log("Selected product:", product);
-  searchTerm.value = product.title; 
-  filteredProducts.value = []; 
+  searchTerm.value = product.title;
+  filteredProducts.value = [];
 };
 
 const highlightText = (text) => {

@@ -4,7 +4,7 @@
         Тавсия этилган маҳсулотлар
     </div>
     <div class="grid grid-cols-6 gap-5">
-       <card/> 
+       <Card/> 
     </div>
 
     </div>
