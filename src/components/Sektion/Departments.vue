@@ -38,7 +38,7 @@
                 {{ product.title }}
               </h2>
               <p class="mb-2 text-sm">{{ product.description }}</p>
-              <a :href="product.url">
+              
                 <button
                   class="relative px-6 py-2 mb-5 bg-black opacity-50 rounded group"
                 >
@@ -50,7 +50,7 @@
                     >Buy Now</span
                   >
                 </button>
-              </a>
+            
             </div>
           </div>
         </SwiperSlide>

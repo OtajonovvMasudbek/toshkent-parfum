@@ -58,12 +58,10 @@ const fetchProducts = async () => {
     );
     products.value = response.data.results;
 
-    // Initialize image indexes to 0 for all products
     products.value.forEach(() => {
       currentImageIndex.value.push(0);
     });
 
-    // Start the image rotation for each product
     products.value.forEach((product, index) => {
       startImageRotation(index, product.images.length);
     });
@@ -76,7 +74,7 @@ const startImageRotation = (productIndex, imageCount) => {
   setInterval(() => {
     currentImageIndex.value[productIndex] =
       (currentImageIndex.value[productIndex] + 1) % imageCount;
-  }, 3000); // Change image every 3 seconds
+  }, 3000); 
 };
 
 onMounted(() => {
@@ -88,7 +86,7 @@ onMounted(() => {
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+.fade-enter, .fade-leave-to {
   opacity: 0;
 }
 </style>

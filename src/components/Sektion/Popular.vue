@@ -10,10 +10,8 @@
         <Card />
       </div>
       <div>
-        <h2 class="text-[33px] py-5 font-semibold">
-            Актуал маҳсулотлар
-        </h2>
-        <Products/>
+        <h2 class="text-[33px] py-5 font-semibold">Актуал маҳсулотлар</h2>
+        <Products />
       </div>
     </div>
   </div>

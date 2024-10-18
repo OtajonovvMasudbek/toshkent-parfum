@@ -1,20 +1,39 @@
 <template>
-    <div class="flex flex-wrap justify-center gap-4 overflow-hidden">
+  <div>
+    <div class="flex justify-center gap-4 overflow-hidden moving-container">
       <div
         v-for="(card, index) in cards"
         :key="index"
-        class="moving-card bg-slate-100 px-4 py-4 rounded-xl m-3 overflow-hidden animate-move max-w-[300px]" 
+        class="moving-card bg-slate-100 px-4 py-4 rounded-xl m-3 overflow-hidden max-w-[200px] flex justify-center items-center"
+      >
+        <img :src="card.icon" :alt="card.alt" class="card-image bg-cover max-h-[60px]" />
+      </div>
+    </div>
+    <div class="flex justify-center gap-4 overflow-hidden moving-container">
+      <div
+        v-for="(card, index) in cards"
+        :key="index"
+        class="moving-card bg-slate-100 px-4 py-4 rounded-xl m-3 overflow-hidden max-w-[210px] flex justify-center items-center"
       >
         <img :src="card.icon" :alt="card.alt" class="card-image max-h-[60px]" />
       </div>
     </div>
-  </template>
-  
-  <script setup>
+    <div class="flex justify-center gap-4 overflow-hidden moving-container">
+      <div
+        v-for="(card, index) in cards"
+        :key="index"
+        class="moving-card bg-slate-100 px-4 py-4 rounded-xl m-3 overflow-hidden max-w-[300px] flex justify-center items-center"
+      >
+        <img :src="card.icon" :alt="card.alt" class="card-image max-h-[60px]" />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
 import { ref, onMounted } from "vue";
 
 const cards = ref([]);
-const loading = ref(true);
 const error = ref(false);
 
 const fetchCards = async () => {
@@ -34,23 +53,34 @@ const fetchCards = async () => {
 
 onMounted(fetchCards);
 </script>
-  
-  <style>
-@keyframes move {
+
+<style scoped>
+@keyframes slide {
   0% {
-    transform: translateX(100%); /* O'ngdan chapga harakat */
+    transform: translateX(100%); 
   }
   100% {
-    transform: translateX(-100%); /* Chapdan o'ngga harakat */
+    transform: translateX(-100%); 
   }
 }
 
-.animate-move {
-  animation: move 10s linear infinite; /* 10 soniya davomida tez harakat */
+.moving-container {
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
 }
 
 .moving-card {
   display: inline-block;
+  animation: slide 10s linear infinite;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.moving-card:hover {
+  transform: scale(1.05); 
+  transition: transform 0.3s ease-in-out;
 }
 </style>
-  
