@@ -25,29 +25,29 @@
         <SwiperSlide
           v-for="product in products"
           :key="product.id"
-          class="flex flex-col items-center p-4"
+          class="flex flex-col items-center lg:p-4"
         >
           <div class="relative flex flex-col items-center">
             <img
-              class="w-4/5 max-h-[500px] mb-2 rounded-lg"
+              class="w-full max-h-[500px] rounded-lg"
               :src="product.image_src.default"
               :alt="`Image of ${product.title}`"
             />
             <div class="absolute bottom-0 p-4 left-32">
-              <h2 class="mb-10 pr-32 text-[30px] font-bold text-white">
+              <h2 class="mb-10 hidden lg:block pr-32 text-[30px] font-bold text-white">
                 {{ product.title }}
               </h2>
               <p class="mb-2 text-sm">{{ product.description }}</p>
               
                 <button
-                  class="relative px-6 py-2 mb-5 bg-black opacity-50 rounded group"
+                  class="relative px-6 py-2 lg:mb-5 bg-black opacity-50 rounded group"
                 >
                   <span
                     class="absolute inset-0 bg-black opacity-50 rounded group-hover:bg-white group-hover:opacity-100 transition-all"
                   ></span>
                   <span
-                    class="relative font-bold text-white transition group-hover:text-black"
-                    >Buy Now</span
+                    class="relative text-[12px] lg:text-[17px] font-bold text-white transition group-hover:text-black"
+                    >Mahsulotlar to'g'risida batafsil</span
                   >
                 </button>
             

@@ -1,9 +1,9 @@
 <template>
-  <div class="container max-w-[1200px] mx-auto ">
-    <h2 class=" text-[33px] py-5 font-semibold text-slate-900">
-        Эркаклар учун энг яхши тоифалар
+  <div class="container max-w-full sm:max-w-[1200px] mx-auto">
+    <h2 class="text-[28px] sm:text-[33px] py-5 font-semibold text-slate-900">
+      Эркаклар учун энг яхши тоифалар
     </h2>
-    <div class="grid grid-cols-3 gap-5">
+    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       <div
         v-for="product in visibleProducts"
         :key="product.id"
@@ -11,20 +11,20 @@
       >
         <div>
           <h2
-            class="text-[20px] text-slate-900 px-2 font-bold transition-all duration-300"
+            class="text-[10px] line-clamp-2 lg:line-clamp-none sm:text-[20px] text-slate-900 px-2 font-bold transition-all duration-300"
           >
             {{ product.title }}
           </h2>
           <button
-            class="text-[#f62559] text-[14px] pb-2 px-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            class="text-[#f62559] text-[12px] sm:text-[14px] pb-2 px-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           >
             Кўпроқ
-            <i class="text-[14px] ri-arrow-right-line"></i>
+            <i class="text-[12px] sm:text-[14px] ri-arrow-right-line"></i>
           </button>
         </div>
-        <div class="max-w-[100px] mt-auto rounded-b-3xl">
+        <div class="max-w-[80px] sm:max-w-[100px] mt-auto rounded-b-3xl">
           <img
-            class="object-contain"
+            class="object-contain w-full h-auto"
             :src="product.icon_src.medium"
             alt="product image"
           />
@@ -36,8 +36,8 @@
   <p v-if="error" class="text-red-500">{{ error }}</p>
   <p v-if="loading" class="text-gray-500">Loading...</p>
 </template>
-  
-  <script setup lang="ts">
+
+<script setup lang="ts">
 import { ref, onMounted } from "vue";
 import axios from "axios";
 
@@ -84,4 +84,3 @@ onMounted(() => {
   fetchProducts();
 });
 </script>
-  

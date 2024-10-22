@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-hidden">
-    <h2 class="text-[33px] font-semibold pl-6 mb-4">Шарҳлар</h2>
+    <h2 class="text-[33px] text-slate-900 font-semibold pl-6 mb-4">Шарҳлар</h2>
     <div
       v-if="topComments.length"
       class="flex justify-center gap-4 cursor-pointer my-5 whitespace-nowrap animate-slide"

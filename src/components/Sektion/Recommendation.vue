@@ -3,7 +3,7 @@
      <div class="text-[32px] py-5 font-semibold">
         Тавсия этилган маҳсулотлар
     </div>
-    <div class="grid grid-cols-6 gap-5">
+    <div class="grid grid-cols-2 lg:grid-cols-6 gap-5">
        <Card/> 
     </div>
 

@@ -8,7 +8,7 @@
       class="absolute right-4 top-5 bg-slate-100 px-2 py-1 rounded-lg transition-all duration-300 hover:text-[#f62559] text-xl ri-heart-line"
     ></i>
 
-    <div class="mb-3 flex justify-center">
+    <div class="mb-3 flx justify-center">
       <transition name="fade">
         <img
           v-if="product.images.length"

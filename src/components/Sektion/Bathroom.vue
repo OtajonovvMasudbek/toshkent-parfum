@@ -1,9 +1,12 @@
 <template>
   <div class="container max-w-[1200px] mx-auto">
-    <h2 class="text-[33px] py-5 font-semibold text-slate-900">
-        Тана ва ҳаммом маҳсулотлари
+    <h2
+      class="text-xl sm:text-2xl md:text-3xl lg:text-4xl py-2 sm:py-3 md:py-5 font-semibold text-slate-900"
+    >
+      Тана ва ҳаммом маҳсулотлари
     </h2>
-    <div class="grid grid-cols-6 gap-5 ">
+
+    <div class="grid grid-cols-2 px-2 lg:grid-cols-6 gap-5">
       <div
         v-for="(product, index) in products.slice(0, 6)"
         :key="product.id"

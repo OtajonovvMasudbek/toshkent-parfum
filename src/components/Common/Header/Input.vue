@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full">
+  <div class="relative w-full z-50">
     <div class="flex items-center justify-center w-full p-2 border rounded">
       <input
         v-model="searchTerm"

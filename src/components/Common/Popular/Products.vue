@@ -46,7 +46,7 @@
       <img
         :src="selectedStory.image_src.default"
         alt="Story"
-        class="w-full h-auto object-cover rounded-lg"
+        class="lg:w-full w-[500px] h-auto object-cover rounded-lg"
       />
       <p class="mt-2">{{ selectedStory.description }}</p>
     </div>

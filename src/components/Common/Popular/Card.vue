@@ -4,9 +4,9 @@
     :key="product.id"
     class="group flex justify-between items-end max-h-[120px] shadow  rounded-lg transition-all  duration-300 hover:shadow-lg pl-2 pt-2 my-2 overflow-hidden"
   >
-    <div>
+    <div class="flex flex-col gap-4">
       <h2
-        class="text-[20px] text-slate-900 px-2 font-bold transition-all duration-300"
+        class="text-[10px] lg:text-[17px] lg:line-clamp-none line-clamp-2 text-slate-900 px-2 font-bold transition-all duration-300"
       >
         {{ product.title }}
       </h2>
@@ -17,7 +17,7 @@
         <i class="text-[14px] ri-arrow-right-line"></i>
       </button>
     </div>
-    <div class="max-w-[100px] mt-auto rounded-b-3xl">
+    <div class="lg:max-w-[100px] max-w-[70px] mt-auto rounded-b-3xl">
       <img
         class="object-contain"
         :src="product.icon_src.medium"
