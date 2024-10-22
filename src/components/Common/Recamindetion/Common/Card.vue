@@ -35,6 +35,7 @@
       </div>
 
       <button
+        @click="addToCart(product)"
         class="bg-[#f62559] hover:bg-red-500 transition-all duration-300 flex items-center gap-2 px-3 text-white w-full text-[14px] font-semibold py-1 rounded-lg mt-auto"
       >
         <i class="text-white addition text-2xl ri-shopping-basket-2-line"></i>
@@ -47,9 +48,11 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import axios from "axios";
+import { useStore } from "vuex"; 
 
 const products = ref([]);
 const currentImageIndex = ref([]);
+const store = useStore(); 
 
 const fetchProducts = async () => {
   try {
@@ -75,6 +78,10 @@ const startImageRotation = (productIndex, imageCount) => {
     currentImageIndex.value[productIndex] =
       (currentImageIndex.value[productIndex] + 1) % imageCount;
   }, 3000); 
+};
+
+const addToCart = (product) => {
+  store.dispatch('addToCart', product); // addToCart aksiyasini chaqirish
 };
 
 onMounted(() => {

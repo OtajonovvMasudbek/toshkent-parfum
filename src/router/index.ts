@@ -1,6 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '@/Page/index.vue'
-import Basket from '@/Page/basket.vue' 
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from '@/Page/index.vue';
+import Basket from '@/Page/basket.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,6 +16,6 @@ const router = createRouter({
       component: Basket
     }
   ]
-})
+});
 
-export default router
+export default router;

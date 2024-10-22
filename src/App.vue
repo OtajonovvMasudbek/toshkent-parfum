@@ -2,8 +2,8 @@
   <div>
     <Header/>
     <router-view></router-view>
-    <index/>
     <Basket/>
+    <index/>
     <Footer/>
     </div>
 </template>

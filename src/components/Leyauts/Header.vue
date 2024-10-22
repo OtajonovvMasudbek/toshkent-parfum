@@ -122,7 +122,7 @@
           </p>
         </router-link>
         <router-link
-          to="/basket"
+          to="/"
           class="text-center save cursor-pointer group hover:text-slate-700"
         >
           <i
