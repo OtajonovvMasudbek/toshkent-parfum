@@ -87,11 +87,13 @@
     <div
       class="container flex flex-wrap justify-between max-w-[1200px] gap-4 px-2 lg:px-14 py-3 mx-auto items-center"
     >
-      <img
-        src="https://toshkent-parfum.uz/images/logo.svg"
-        alt="Logo"
-        class="pink-logo lg:block"
-      />
+      <router-link to="/">
+        <img
+          src="https://toshkent-parfum.uz/images/logo.svg"
+          alt="Logo"
+          class="pink-logo lg:block"
+        />
+      </router-link>
 
       <div
         :class="[
@@ -122,7 +124,7 @@
           </p>
         </router-link>
         <router-link
-          to="/"
+          to="/basket"
           class="text-center save cursor-pointer group hover:text-slate-700"
         >
           <i

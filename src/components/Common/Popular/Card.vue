@@ -1,102 +1,89 @@
 <template>
   <div
-    v-for="(product, index) in products"
+    v-for="product in visibleProducts"
     :key="product.id"
-    class="bg-white/25 rounded-xl cursor-pointer h-[380px] shadow-lg border-spacing-[0.5px] transition-all duration-500 hover:shadow-2xl my-5 p-3 group relative flex flex-col justify-between"
+    class="group flex justify-between items-end max-h-[120px] shadow  rounded-lg transition-all  duration-300 hover:shadow-lg pl-2 pt-2 my-2 overflow-hidden"
   >
-    <i
-      class="absolute right-4 top-5 bg-slate-900 px-2 py-1 rounded-lg transition-all duration-300 hover:text-[#f62559] text-xl ri-heart-line"
-    ></i>
-
-    <div class="mb-3 flx justify-center">
-      <transition name="fade">
-        <img
-          v-if="product.images.length"
-          class="max-w-[150px] max-h-[150px] object-contain"
-          :src="product.images[currentImageIndex[index]].default"
-          :alt="product.name"
-        />
-      </transition>
-    </div>
-
-    <div class="flex flex-col flex-grow justify-between">
-      <div>
-        <p class="text-[#f62559] py-3 text-[15px]">
-          {{ product.manufacturer.title }}
-        </p>
-        <p
-          class="text-slate-800 line-clamp-1 text-[13px] transition-all duration-300 group-hover:text-[#f62559]"
-        >
-          {{ product.title }}
-        </p>
-        <p class="font-bold text-lg py-3 text-slate-800">
-          {{ product.price }} UZS
-        </p>
-      </div>
-
-      <button
-        @click="addToCart(product)"
-        class="bg-[#f62559] hover:bg-red-500 transition-all duration-300 flex items-center gap-2 px-3 text-white w-full text-[14px] font-semibold py-1 rounded-lg mt-auto"
+    <div>
+      <h2
+        class="text-[20px] line-clamp-2 text-slate-900 px-2 font-bold transition-all duration-300"
       >
-        <i class="text-white addition text-2xl ri-shopping-basket-2-line"></i>
-        Саватчага қўшиш
+        {{ product.title }}
+      </h2>
+      <button
+        class="text-[#f62559] text-[14px] pb-2 px-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+      >
+        Кўпроқ
+        <i class="text-[14px] ri-arrow-right-line"></i>
       </button>
     </div>
+    <div class="max-w-[100px] mt-auto rounded-b-3xl">
+      <img
+        class="object-contain"
+        :src="product.icon_src.medium"
+        alt="product image"
+      />
+    </div>
   </div>
+
+  <div v-if="products.length > maxVisible" class="text-left top-0 mt-4">
+    <button
+      @click="showMore"
+      class="text-[#5b5758]  hover:text-[#f62559] px-4 py-2 rounded-lg transition-all duration-[0.5s]"
+    >
+      Барча бўлимлар
+      <i class="text-[14px] ri-arrow-right-line"></i>
+    </button>
+  </div>
+
+  <p v-if="error" class="text-red-500">{{ error }}</p>
+  <p v-if="loading" class="text-gray-500">Loading...</p>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from "vue";
 import axios from "axios";
-import { useStore } from "vuex"; 
 
-const products = ref([]);
-const currentImageIndex = ref([]);
-const store = useStore();
+interface Product {
+  id: number;
+  title: string;
+  icon_src: {
+    medium: string;
+  };
+}
+
+const products = ref<Product[]>([]);
+const loading = ref<boolean>(false);
+const error = ref<string | null>(null);
+const maxVisible = ref<number>(12);
+const visibleProducts = ref<Product[]>([]);
 
 const fetchProducts = async () => {
+  loading.value = true;
   try {
-    const response = await axios.get(
+    const response = await axios.get<Product[]>(
       "https://toshkent-parfum.uz/api/v1/products/categories/"
     );
-    products.value = response.data.results;
-
-    products.value.forEach(() => {
-      currentImageIndex.value.push(0);
-    });
-
-    products.value.forEach((product, index) => {
-      startImageRotation(index, product.images.length);
-    });
-  } catch (error) {
-    console.error("Error fetching products:", error);
+    products.value = response.data;
+    updateVisibleProducts();
+  } catch (err) {
+    console.error(err);
+    error.value = "Error fetching products";
+  } finally {
+    loading.value = false;
   }
 };
 
-// Rasm aylantirish funksiyasi
-const startImageRotation = (productIndex, imageCount) => {
-  if (imageCount > 1) {
-    setInterval(() => {
-      currentImageIndex.value[productIndex] =
-        (currentImageIndex.value[productIndex] + 1) % imageCount;
-    }, 3000); 
-  }
+const updateVisibleProducts = () => {
+  visibleProducts.value = products.value.slice(0, maxVisible.value);
 };
 
-const addToCart = (product) => {
-  store.dispatch('addToCart', product);
+const showMore = () => {
+  maxVisible.value += 12;
+  updateVisibleProducts();
 };
 
 onMounted(() => {
   fetchProducts();
 });
 </script>
-
-<style scoped>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
-</style>
