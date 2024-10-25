@@ -71,7 +71,7 @@ let timer = null;
 const fetchStories = async () => {
   try {
     const response = await axios.get(
-      "https://toshkent-parfum.xn--h28h.uz/api/v1/common/story/"
+      "https://toshkent-parfum.xn--h28h.uz/api/v1/common/story/",
     );
     stories.value = response.data.results.map((story) => ({
       image_src: story.image_src,
@@ -89,7 +89,7 @@ const openModal = (story, index) => {
   currentIndex.value = index;
   startStoryTimer();
   resetProgressBar();
-  document.body.style.overflow = "hidden"; 
+  document.body.style.overflow = "hidden";
 };
 
 const startDrag = (event) => {
@@ -131,7 +131,7 @@ const closeModal = () => {
   modalVisible.value = false;
   progressBarWidth.value = 0;
   clearTimeout(timer);
-  document.body.style.overflow = ""; 
+  document.body.style.overflow = "";
 };
 
 const resetProgressBar = () => {

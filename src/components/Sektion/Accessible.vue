@@ -6,7 +6,11 @@
         :key="index"
         class="moving-card bg-slate-100 px-4 py-4 rounded-xl m-3 overflow-hidden max-w-[200px] flex justify-center items-center"
       >
-        <img :src="card.icon" :alt="card.alt" class="card-image bg-cover max-h-[60px]" />
+        <img
+          :src="card.icon"
+          :alt="card.alt"
+          class="card-image bg-cover max-h-[60px]"
+        />
       </div>
     </div>
     <div class="flex justify-center gap-4 overflow-hidden moving-container">
@@ -39,7 +43,7 @@ const error = ref(false);
 const fetchCards = async () => {
   try {
     const response = await fetch(
-      "https://toshkent-parfum.uz/api/v1/products/manufacture/"
+      "https://toshkent-parfum.uz/api/v1/products/manufacture/",
     );
 
     if (!response.ok) throw new Error("Network response was not ok");
@@ -57,10 +61,10 @@ onMounted(fetchCards);
 <style scoped>
 @keyframes slide {
   0% {
-    transform: translateX(100%); 
+    transform: translateX(100%);
   }
   100% {
-    transform: translateX(-100%); 
+    transform: translateX(-100%);
   }
 }
 
@@ -80,7 +84,7 @@ onMounted(fetchCards);
 }
 
 .moving-card:hover {
-  transform: scale(1.05); 
+  transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
 }
 </style>

@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
-    "types": [
-      "vite/client"
-    ],
+    "types": ["vite/client"],
     "module": "ESNext",
     "moduleResolution": "node",
     "target": "ESNext",
@@ -10,12 +8,8 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

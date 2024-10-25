@@ -2,11 +2,11 @@
   <div
     v-for="product in visibleProducts"
     :key="product.id"
-    class="group flex justify-between items-end max-h-[120px] shadow  rounded-lg transition-all  duration-300 hover:shadow-lg pl-2 pt-2 my-2 overflow-hidden"
+    class="group flex justify-between items-end max-h-[120px] shadow rounded-lg transition-all duration-300 hover:shadow-lg pl-2 pt-2 my-2 overflow-hidden"
   >
     <div>
       <h2
-        class=" lg:text-[20px] text-[15px]  line-clamp-2 text-slate-900 lg:px-2 lg:font-bold transition-all duration-300"
+        class="lg:text-[20px] text-[15px] line-clamp-2 text-slate-900 lg:px-2 lg:font-bold transition-all duration-300"
       >
         {{ product.title }}
       </h2>
@@ -29,7 +29,7 @@
   <div v-if="products.length > maxVisible" class="text-left top-0 mt-4">
     <button
       @click="showMore"
-      class="text-[#5b5758]  hover:text-[#f62559] px-4 py-2 rounded-lg transition-all duration-[0.5s]"
+      class="text-[#5b5758] hover:text-[#f62559] px-4 py-2 rounded-lg transition-all duration-[0.5s]"
     >
       Барча бўлимлар
       <i class="text-[14px] ri-arrow-right-line"></i>
@@ -62,7 +62,7 @@ const fetchProducts = async () => {
   loading.value = true;
   try {
     const response = await axios.get<Product[]>(
-      "https://toshkent-parfum.uz/api/v1/products/categories/"
+      "https://toshkent-parfum.uz/api/v1/products/categories/",
     );
     products.value = response.data;
     updateVisibleProducts();

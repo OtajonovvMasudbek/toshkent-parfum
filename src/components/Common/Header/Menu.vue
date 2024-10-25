@@ -17,8 +17,8 @@
     </ul>
   </div>
 </template>
-  
-  <script setup>
+
+<script setup>
 import { ref, onMounted } from "vue";
 
 const menus = ref([]);
@@ -26,7 +26,7 @@ const menus = ref([]);
 const fetchMenus = async () => {
   try {
     const response = await fetch(
-      "https://toshkent-parfum.xn--h28h.uz/api/v1/common/header-menu"
+      "https://toshkent-parfum.xn--h28h.uz/api/v1/common/header-menu",
     );
     const data = await response.json();
     menus.value = data.results;
@@ -39,4 +39,3 @@ onMounted(() => {
   fetchMenus();
 });
 </script>
-  

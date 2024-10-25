@@ -18,7 +18,7 @@
         }"
         :loop="true"
         :autoplay="{
-          delay: 500, 
+          delay: 500,
           disableOnInteraction: false,
         }"
       >
@@ -34,11 +34,13 @@
               :alt="`Image of ${product.title}`"
             />
             <div class="absolute bottom-0 p-4 left-32">
-              <h2 class="mb-10 hidden lg:block pr-32 text-[30px] font-bold text-white">
+              <h2
+                class="mb-10 hidden lg:block pr-32 text-[30px] font-bold text-white"
+              >
                 {{ product.title }}
               </h2>
               <p class="mb-2 text-sm">{{ product.description }}</p>
-              
+
               <button
                 class="relative px-6 py-2 lg:mb-5 bg-black opacity-50 rounded group"
               >
@@ -47,10 +49,10 @@
                 ></span>
                 <span
                   class="relative text-[12px] lg:text-[17px] font-bold text-white transition group-hover:text-black"
-                >Mahsulotlar to'g'risida batafsil</span>
+                  >Mahsulotlar to'g'risida batafsil</span
+                >
                 >
               </button>
-            
             </div>
           </div>
         </SwiperSlide>
@@ -73,7 +75,7 @@ const fetchProducts = async () => {
   loading.value = true;
   try {
     const response = await axios.get(
-      "https://toshkent-parfum.xn--h28h.uz/api/v1/products/banner/"
+      "https://toshkent-parfum.xn--h28h.uz/api/v1/products/banner/",
     );
     products.value = response.data.results;
   } catch (err) {

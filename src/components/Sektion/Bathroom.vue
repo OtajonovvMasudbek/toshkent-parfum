@@ -75,7 +75,7 @@ const store = useStore();
 const fetchProducts = async () => {
   try {
     const response = await axios.get(
-      "https://toshkent-parfum.uz/api/v1/products/?product_group_id=1219&ordering=?"
+      "https://toshkent-parfum.uz/api/v1/products/?product_group_id=1219&ordering=?",
     );
     products.value = response.data.results;
 
@@ -100,12 +100,11 @@ const startImageRotation = (productIndex, imageCount) => {
 };
 
 const addToCart = (product, index) => {
-  store.dispatch("addToCart" , product);
+  store.dispatch("addToCart", product);
   addedToCart.value[index] = true;
 };
 
 const formatPrice = (price) => {
-
   return new Intl.NumberFormat("uz-UZ").format(price);
 };
 

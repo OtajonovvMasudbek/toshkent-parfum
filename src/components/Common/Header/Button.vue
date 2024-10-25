@@ -42,8 +42,8 @@
     </transition>
   </div>
 </template>
-  
-  <script setup>
+
+<script setup>
 import { ref } from "vue";
 
 const showDropdown = ref(false);
@@ -54,8 +54,8 @@ const toggleDropdown = () => {
 
 const categories = ref([]);
 </script>
-  
-  <style scoped>
+
+<style scoped>
 .category-column {
   min-width: 200px;
 }
@@ -75,7 +75,9 @@ button {
 
 .fade-slide-enter-active,
 .fade-slide-leave-active {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .fade-slide-enter-from {
@@ -104,4 +106,3 @@ button {
   transform: scale(1.25);
 }
 </style>
-  

@@ -6,7 +6,7 @@
       class="flex justify-center gap-4 cursor-pointer my-5 whitespace-nowrap animate-slide"
     >
       <div
-        v-for="(comment, index) in topComments"
+        v-for="comment in topComments"
         :key="comment.id"
         class="max-w-[500px] w-full max-h-[200px] md:w-1/2 lg:w-1/3 rounded-xl shadow-lg px-4 transition-opacity duration-500 h-[250px] flex flex-col justify-between"
       >
@@ -52,8 +52,8 @@
     <p v-else>No comments found.</p>
   </div>
 </template>
-        
-  <script setup>
+
+<script setup>
 import { ref, onMounted } from "vue";
 import axios from "axios";
 
@@ -62,7 +62,7 @@ const topComments = ref([]);
 const fetchTopComments = async () => {
   try {
     const response = await axios.get(
-      "https://toshkent-parfum.uz/api/v1/products/top-comments/"
+      "https://toshkent-parfum.uz/api/v1/products/top-comments/",
     );
     topComments.value = response.data.results;
   } catch (error) {
@@ -77,8 +77,8 @@ const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString(undefined, options);
 };
 </script>
-        
-  <style scoped>
+
+<style scoped>
 .comment {
   color: #555;
 }
@@ -120,4 +120,3 @@ const formatDate = (dateString) => {
   }
 }
 </style>
-  

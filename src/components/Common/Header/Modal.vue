@@ -89,8 +89,8 @@
     </div>
   </div>
 </template>
-  
-  <script setup>
+
+<script setup>
 import { ref } from "vue";
 
 const { isOpen, closeModal } = defineProps({
@@ -118,8 +118,8 @@ const handleSubmit = () => {
   }, 1000);
 };
 </script>
-  
-  <style scoped>
+
+<style scoped>
 button:hover {
   transform: scale(1.05);
   transition: transform 0.1s ease-in-out;
@@ -148,4 +148,3 @@ form {
   }
 }
 </style>
-  

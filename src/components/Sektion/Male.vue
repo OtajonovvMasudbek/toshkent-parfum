@@ -1,9 +1,13 @@
 <template>
   <div class="container max-w-full sm:max-w-[1200px] mx-auto">
-    <h2 class="text-[28px] sm:text-[33px] mx-10 py-5 font-semibold text-slate-900">
+    <h2
+      class="text-[28px] sm:text-[33px] mx-10 py-5 font-semibold text-slate-900"
+    >
       Эркаклар учун энг яхши тоифалар
     </h2>
-    <div class="grid grid-cols-2 lg:mx-10 mx-1 sm:grid-cols-2 px-1 lg:grid-cols-3 gap-5">
+    <div
+      class="grid grid-cols-2 lg:mx-10 mx-1 sm:grid-cols-2 px-1 lg:grid-cols-3 gap-5"
+    >
       <div
         v-for="product in visibleProducts"
         :key="product.id"
@@ -59,7 +63,7 @@ const fetchProducts = async () => {
   loading.value = true;
   try {
     const response = await axios.get<Product[]>(
-      "https://toshkent-parfum.uz/api/v1/products/categories/"
+      "https://toshkent-parfum.uz/api/v1/products/categories/",
     );
     products.value = response.data;
     updateVisibleProducts();

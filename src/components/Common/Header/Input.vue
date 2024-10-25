@@ -1,7 +1,10 @@
 <template>
   <div class="relative w-full z-50">
     <div
-      :class="['flex items-center justify-center w-full p-2 border rounded', isFixedOnMobile ? 'fixed top-0 left-0 z-50 w-full bg-white' : '']"
+      :class="[
+        'flex items-center justify-center w-full p-2 border rounded',
+        isFixedOnMobile ? 'fixed top-0 left-0 z-50 w-full bg-white' : '',
+      ]"
       :style="{ transition: 'top 0.3s ease' }"
     >
       <i class="pt-[2px] text-slate-500 pr-2 text-[17px] ri-search-line"></i>
@@ -56,7 +59,7 @@ const isFixedOnMobile = ref(false);
 const fetchProducts = async (term = "") => {
   try {
     const response = await axios.get(
-      `https://toshkent-parfum.uz/api/v1/products/?search=${term}&page=1&size=10`
+      `https://toshkent-parfum.uz/api/v1/products/?search=${term}&page=1&size=10`,
     );
     filteredProducts.value = response.data.results || [];
   } catch (error) {

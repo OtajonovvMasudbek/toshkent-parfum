@@ -38,7 +38,7 @@
         @click="addToCart(product, index)"
         :class="{
           'bg-[#f62559] hover:bg-red-500': !addedToCart[index],
-          'bg-green-500 cursor-not-allowed': addedToCart[index]
+          'bg-green-500 cursor-not-allowed': addedToCart[index],
         }"
         class="transition-all duration-300 flex items-center gap-2 px-3 text-white w-full text-[14px] font-semibold py-1 rounded-lg mt-auto"
         :disabled="addedToCart[index]"
@@ -64,7 +64,7 @@ const store = useStore();
 const fetchProducts = async () => {
   try {
     const response = await axios.get(
-      "https://toshkent-parfum.uz/api/v1/products?ordering=%3F&page=2&product_group_id=941"
+      "https://toshkent-parfum.uz/api/v1/products?ordering=%3F&page=2&product_group_id=941",
     );
     products.value = response.data.results;
 
@@ -89,7 +89,7 @@ const startImageRotation = (productIndex, imageCount) => {
 };
 
 const addToCart = (product, index) => {
-  store.dispatch('addToCart', product);
+  store.dispatch("addToCart", product);
   addedToCart.value[index] = true; // Show added to cart message
 };
 
@@ -97,4 +97,3 @@ onMounted(() => {
   fetchProducts();
 });
 </script>
-
