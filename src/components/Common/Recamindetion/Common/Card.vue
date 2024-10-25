@@ -35,11 +35,17 @@
       </div>
 
       <button
-        @click="addToCart(product)"
-        class="bg-[#f62559] hover:bg-red-500 transition-all duration-300 flex items-center gap-2 px-3 text-white w-full text-[14px] font-semibold py-1 rounded-lg mt-auto"
+        @click="addToCart(product, index)"
+        :class="{
+          'bg-[#f62559] hover:bg-red-500': !addedToCart[index],
+          'bg-green-500 cursor-not-allowed': addedToCart[index]
+        }"
+        class="transition-all duration-300 flex items-center gap-2 px-3 text-white w-full text-[14px] font-semibold py-1 rounded-lg mt-auto"
+        :disabled="addedToCart[index]"
       >
         <i class="text-white addition text-2xl ri-shopping-basket-2-line"></i>
-        Саватчага қўшиш
+        <span v-if="!addedToCart[index]">Саватчага қўшиш</span>
+        <span v-else>Саватчага қўшилди!</span>
       </button>
     </div>
   </div>
@@ -48,11 +54,12 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import axios from "axios";
-import { useStore } from "vuex"; 
+import { useStore } from "vuex";
 
 const products = ref([]);
 const currentImageIndex = ref([]);
-const store = useStore(); 
+const addedToCart = ref([]); // To track added-to-cart state
+const store = useStore();
 
 const fetchProducts = async () => {
   try {
@@ -63,6 +70,7 @@ const fetchProducts = async () => {
 
     products.value.forEach(() => {
       currentImageIndex.value.push(0);
+      addedToCart.value.push(false); // Initialize added-to-cart state
     });
 
     products.value.forEach((product, index) => {
@@ -77,11 +85,12 @@ const startImageRotation = (productIndex, imageCount) => {
   setInterval(() => {
     currentImageIndex.value[productIndex] =
       (currentImageIndex.value[productIndex] + 1) % imageCount;
-  }, 3000); 
+  }, 3000);
 };
 
-const addToCart = (product) => {
-  store.dispatch('addToCart', product); // addToCart aksiyasini chaqirish
+const addToCart = (product, index) => {
+  store.dispatch('addToCart', product);
+  addedToCart.value[index] = true; // Show added to cart message
 };
 
 onMounted(() => {
@@ -89,11 +98,3 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
-</style>

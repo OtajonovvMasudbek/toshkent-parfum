@@ -1,16 +1,15 @@
 <template>
-  <div class="container max-w-[1200px] mx-auto">
-    <h2
-      class="text-xl sm:text-2xl md:text-3xl lg:text-4xl py-2 sm:py-3 md:py-5 font-semibold text-slate-900"
-    >
-      Тана ва ҳаммом маҳсулотлари
-    </h2>
-
-    <div class="grid grid-cols-2 px-2 lg:grid-cols-6 gap-5">
+  <div>
+    <div>
+      <h2 class="text-[33px] font-semibold text-slate-900 mx-10">
+        Тана ва ҳаммом маҳсулотлари
+      </h2>
+    </div>
+    <div class="grid grid-cols-2 lg:mx-10 mx-1 gap-5 pt-9 lg:grid-cols-6">
       <div
         v-for="(product, index) in products.slice(0, 6)"
         :key="product.id"
-        class="bg-white/25 rounded-xl cursor-pointer h-[380px] shadow border-spacing-[0.5px] transition-all duration-500 hover:shadow-2xl my-5 p-3 group relative flex flex-col justify-between"
+        class="bg-white/25 rounded-xl cursor-pointer h-[380px] shadow-lg border-spacing-[0.5px] transition-all duration-500 hover:shadow-2xl my-5 p-3 group relative flex flex-col justify-between"
       >
         <i
           class="absolute right-4 top-5 bg-slate-100 px-2 py-1 rounded-lg transition-all duration-300 hover:text-[#f62559] text-xl ri-heart-line"
@@ -38,30 +37,40 @@
               {{ product.title }}
             </p>
             <p class="font-bold text-lg py-3 text-slate-800">
-              {{ product.price }} UZS
+              {{ formatPrice(product.price) }} UZS
             </p>
           </div>
 
           <button
-            class="bg-[#f62559] hover:bg-red-500 transition-all duration-300 flex items-center gap-2 px-3 text-white w-full text-[14px] font-semibold py-1 rounded-lg mt-auto"
+            @click="addToCart(product, index)"
+            :class="{
+              'bg-[#f62559] hover:bg-red-500': !addedToCart[index],
+              'bg-green-500 cursor-not-allowed': addedToCart[index],
+            }"
+            class="transition-all duration-300 flex items-center gap-2 px-3 text-white w-full text-[14px] font-semibold py-1 rounded-lg mt-auto"
+            :disabled="addedToCart[index]"
           >
             <i
               class="text-white addition text-2xl ri-shopping-basket-2-line"
             ></i>
-            Саватчага қўшиш
+            <span v-if="!addedToCart[index]">Саватчага қўшиш</span>
+            <span v-else>Саватчага қўшилди!</span>
           </button>
         </div>
       </div>
     </div>
   </div>
 </template>
-  
-  <script setup>
+
+<script setup>
 import { ref, onMounted } from "vue";
 import axios from "axios";
+import { useStore } from "vuex";
 
 const products = ref([]);
 const currentImageIndex = ref([]);
+const addedToCart = ref([]);
+const store = useStore();
 
 const fetchProducts = async () => {
   try {
@@ -72,6 +81,7 @@ const fetchProducts = async () => {
 
     products.value.forEach(() => {
       currentImageIndex.value.push(0);
+      addedToCart.value.push(false);
     });
 
     products.value.forEach((product, index) => {
@@ -89,19 +99,17 @@ const startImageRotation = (productIndex, imageCount) => {
   }, 3000);
 };
 
+const addToCart = (product, index) => {
+  store.dispatch("addToCart" , product);
+  addedToCart.value[index] = true;
+};
+
+const formatPrice = (price) => {
+
+  return new Intl.NumberFormat("uz-UZ").format(price);
+};
+
 onMounted(() => {
   fetchProducts();
 });
 </script>
-  
-  <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>
-  

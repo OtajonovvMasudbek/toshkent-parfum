@@ -6,7 +6,7 @@
   >
     <div>
       <h2
-        class="text-[20px] line-clamp-2 text-slate-900 px-2 font-bold transition-all duration-300"
+        class=" lg:text-[20px] text-[15px]  line-clamp-2 text-slate-900 lg:px-2 lg:font-bold transition-all duration-300"
       >
         {{ product.title }}
       </h2>
@@ -17,7 +17,7 @@
         <i class="text-[14px] ri-arrow-right-line"></i>
       </button>
     </div>
-    <div class="max-w-[100px] mt-auto rounded-b-3xl">
+    <div class="lg:max-w-[100px] max-w-[60px] mt-auto rounded-b-3xl">
       <img
         class="object-contain"
         :src="product.icon_src.medium"

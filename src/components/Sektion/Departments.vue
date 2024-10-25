@@ -18,7 +18,7 @@
         }"
         :loop="true"
         :autoplay="{
-          delay: 1000, 
+          delay: 500, 
           disableOnInteraction: false,
         }"
       >
@@ -39,17 +39,17 @@
               </h2>
               <p class="mb-2 text-sm">{{ product.description }}</p>
               
-                <button
-                  class="relative px-6 py-2 lg:mb-5 bg-black opacity-50 rounded group"
+              <button
+                class="relative px-6 py-2 lg:mb-5 bg-black opacity-50 rounded group"
+              >
+                <span
+                  class="absolute inset-0 bg-black opacity-50 rounded group-hover:bg-white group-hover:opacity-100 transition-all"
+                ></span>
+                <span
+                  class="relative text-[12px] lg:text-[17px] font-bold text-white transition group-hover:text-black"
+                >Mahsulotlar to'g'risida batafsil</span>
                 >
-                  <span
-                    class="absolute inset-0 bg-black opacity-50 rounded group-hover:bg-white group-hover:opacity-100 transition-all"
-                  ></span>
-                  <span
-                    class="relative text-[12px] lg:text-[17px] font-bold text-white transition group-hover:text-black"
-                    >Mahsulotlar to'g'risida batafsil</span
-                  >
-                </button>
+              </button>
             
             </div>
           </div>

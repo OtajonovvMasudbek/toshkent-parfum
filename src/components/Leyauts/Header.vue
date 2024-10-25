@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="w-full bg-slate-100">
+    <div class="w-full lg:bg-slate-100">
       <div class="container px-4 py-3 mx-auto">
         <div class="hidden lg:flex items-center justify-between">
           <div class="flex items-center gap-10">
@@ -85,16 +85,17 @@
     </div>
 
     <div
-      class="container flex flex-wrap justify-between max-w-[1200px] gap-4 px-2 lg:px-14 py-3 mx-auto items-center"
+      class="container flex flex-wrap justify-between max-w-[1200px] gap-4 px- py-3 mx-auto items-center"
     >
-      <router-link to="/">
-        <img
-          src="https://toshkent-parfum.uz/images/logo.svg"
-          alt="Logo"
-          class="pink-logo lg:block"
-        />
-      </router-link>
-
+      <div class="flex items-center gap-3">
+        <router-link to="/">
+          <img
+            src="https://toshkent-parfum.uz/images/logo.svg"
+            alt="Logo"
+            class="pink-logo lg:block"
+          />
+        </router-link>
+      </div>
       <div
         :class="[
           'w-full lg:relative lg:w-[450px] order-3 lg:order-none z-50 transition-transform duration-500 ease-in-out',
@@ -147,12 +148,10 @@
           </p>
         </div>
       </div>
-      <button
-        class="hidden lg:flex font-bold text-white items-center gap-1 rounded-md px-6 py-3 bg-[#f62559] hover:bg-[#f62525] transition-colors duration-300"
-      >
-        <i class="text-white ri-login-box-line"></i>
-        Kirish
-      </button>
+
+      <Access @click="openModal" />
+
+      <Modal v-if="isModalOpen" :isOpen="isModalOpen" @close="closeModal" />
     </div>
 
     <div class="hidden lg:block px-4">
@@ -161,12 +160,22 @@
   </header>
 </template>
 
-
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 
-const isFixedOnMobile = ref(false);
+// Modal state
+const isModalOpen = ref(false);
 
+// Open modal
+const openModal = () => {
+  isModalOpen.value = true;
+};
+
+const closeModal = () => {
+  isModalOpen.value = false;
+};
+
+const isFixedOnMobile = ref(false);
 const handleScroll = () => {
   if (window.innerWidth < 1024) {
     isFixedOnMobile.value = window.scrollY > 0;
@@ -188,12 +197,13 @@ import LanguageSelector from "../Common/Header/LanguageSelector.vue";
 import Button from "../Common/Header/Button.vue";
 import Input from "../Common/Header/Input.vue";
 import Menu from "../Common/Header/Menu.vue";
+import Access from "../Common/Header/Accsess.vue";
+import Modal from "../Common/Header/Modal.vue";
 </script>
-
 
 <style scoped>
 .pink-logo {
   filter: invert(50%) sepia(50%) saturate(5000%) hue-rotate(305deg)
     brightness(100%) contrast(101%);
 }
-</style>  
+</style>
