@@ -4,7 +4,7 @@ interface Product {
   id: number;
   name: string;
   price: number;
-  quantity?: number; // 'quantity' optional, as it may not be defined on the initial product
+  quantity?: number; 
 }
 
 interface State {
