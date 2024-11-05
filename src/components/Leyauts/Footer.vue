@@ -89,7 +89,7 @@
       </div>
 
       <div
-        class="flex max-w-full lg:max-w-[500px] mb-10 bg-slate-100 px-5 py-5 md:px-10 md:py-10 rounded-xl gap-5 md:gap-10 items-center"
+        class="flex max-w-full lg:max-w-[500px]  mb-14 bg-slate-100 px-5 py-5 md:px-10 md:py-10 rounded-xl gap-5 md:gap-10 items-center"
       >
         <div>
           <h2 class="text-slate-900 text-[17px] font-bold">
@@ -110,7 +110,7 @@
       </div>
     </div>
     <div
-      class="lg:hidden bg-white w-full grid fixed z-50 grid-cols-5 px-5 gap-5 justify-center items-center bottom-0"
+      class="lg:hidden bg-white w-full grid fixed z-50 py-3 grid-cols-5 px-5 gap-5 justify-center items-center bottom-0"
     >
       <router-link to="/">
         <div class="flex justify-center items-center">

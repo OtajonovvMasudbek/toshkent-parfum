@@ -1,6 +1,12 @@
 <template>
   <div>
-    <div v-if="loading" class="text-lg text-center">Yuklanmoqda...</div>
+    <div v-if="loading" class="flex justify-center items-center h-screen">
+      <div class="loader">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
     <div v-else-if="error" class="text-center text-red-500">{{ error }}</div>
     <div v-else>
       <Swiper
@@ -18,7 +24,7 @@
         }"
         :loop="true"
         :autoplay="{
-          delay: 500,
+          delay: 3000,
           disableOnInteraction: false,
         }"
       >
@@ -51,7 +57,6 @@
                   class="relative text-[12px] lg:text-[17px] font-bold text-white transition group-hover:text-black"
                   >Mahsulotlar to'g'risida batafsil</span
                 >
-                >
               </button>
             </div>
           </div>
@@ -72,17 +77,17 @@ const loading = ref(false);
 const error = ref(null);
 
 const fetchProducts = async () => {
-  loading.value = true;
+  loading.value = true; 
   try {
     const response = await axios.get(
-      "https://toshkent-parfum.xn--h28h.uz/api/v1/products/banner/",
+      "https://toshkent-parfum.xn--h28h.uz/api/v1/products/banner/"
     );
     products.value = response.data.results;
   } catch (err) {
     console.error(err);
     error.value = "Error fetching products";
   } finally {
-    loading.value = false;
+    loading.value = false; // Yuklash tugadi
   }
 };
 
@@ -90,3 +95,58 @@ onMounted(() => {
   fetchProducts();
 });
 </script>
+
+<style scoped>
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: #3498db;
+  animation: bounce 0.6s infinite alternate;
+}
+
+.dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Media query for mobile adjustments */
+@media (max-width: 768px) {
+  .loader {
+    flex-direction: column; /* Stack dots vertically */
+  }
+  
+  .dot {
+    width: 10px;  /* Smaller dots for mobile */
+    height: 10px; /* Smaller dots for mobile */
+    margin: 0 3px; /* Reduced margin */
+  }
+
+  .text-red-500 {
+    font-size: 14px; /* Adjust error text size for mobile */
+  }
+}
+</style>

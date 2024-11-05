@@ -56,8 +56,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
+interface Language {
+  code: string;
+  name: string;
+  flag: string;
+}
+
 const dropdownOpen = ref(false);
-const languages = ref([
+const languages = ref<Language[]>([
   {
     code: "ru",
     name: "RU",
@@ -69,13 +75,13 @@ const languages = ref([
     flag: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Flag_of_Uzbekistan.png",
   },
 ]);
-const selectedLanguage = ref(languages.value[0]);
+const selectedLanguage = ref<Language>(languages.value[0]);
 
 const toggleDropdown = () => {
   dropdownOpen.value = !dropdownOpen.value;
 };
 
-const selectLanguage = (language) => {
+const selectLanguage = (language: Language) => {
   selectedLanguage.value = language;
   dropdownOpen.value = false;
 };

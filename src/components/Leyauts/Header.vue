@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="w-full lg:bg-slate-100">
-      <div class="container px-4 py-3 mx-auto">
+      <div class="container px-10 py-3 mx-auto">
         <div class="hidden lg:flex items-center justify-between">
           <div class="flex items-center gap-10">
             <a
@@ -85,7 +85,7 @@
     </div>
 
     <div
-      class="container flex flex-wrap justify-between max-w-[1200px] gap-4 px- py-3 mx-auto items-center"
+      class="container flex flex-wrap lg:justify-between max-w-[1200px] gap-4 px-2 lg:px-7 py-3 mx-auto items-center"
     >
       <div class="flex items-center gap-3">
         <router-link to="/">
@@ -110,7 +110,7 @@
         <Input />
       </div>
 
-      <div class="flex gap-7">
+      <div class="flex  lg:gap-7">
         <router-link
           to="buyurtmalarim"
           class="text-center cursor-pointer group hover:text-slate-700"
@@ -163,10 +163,8 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 
-// Modal state
 const isModalOpen = ref(false);
 
-// Open modal
 const openModal = () => {
   isModalOpen.value = true;
 };

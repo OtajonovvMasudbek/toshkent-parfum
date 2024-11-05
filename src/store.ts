@@ -1,4 +1,4 @@
-import { createStore, Store } from "vuex";
+import { createStore } from "vuex";
 
 interface Product {
   id: number;
