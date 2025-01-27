@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "types": ["vite/client"],
-    "module": "ESNext",
+    "target": "esnext",
+    "module": "esnext",
     "moduleResolution": "node",
-    "target": "ESNext",
-    "jsx": "preserve",
+    "lib": ["dom", "esnext"],
     "strict": true,
-    "baseUrl": ".",
-    "noImplicitAny": true,
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.vue"
+  ]
 }

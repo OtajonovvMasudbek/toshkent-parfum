@@ -2,7 +2,7 @@
   <div
     v-for="product in visibleProducts"
     :key="product.id"
-    class="group flex justify-between items-end max-h-[120px] shadow rounded-lg transition-all duration-300 hover:shadow-lg pl-2 pt-2 my-2 overflow-hidden"
+    class="group flex cursor-pointer justify-between items-end max-h-[120px] shadow rounded-lg transition-all duration-300 hover:shadow-lg pl-2 pt-2 my-2 overflow-hidden"
   >
     <div>
       <h2
@@ -67,7 +67,7 @@ const fetchProducts = async () => {
     products.value = response.data;
     updateVisibleProducts();
   } catch (err) {
-    console.error(err);
+    console.error(err); 
     error.value = "Error fetching products";
   } finally {
     loading.value = false;
